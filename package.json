@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "bip39": "^3.0.2",
+    "ethereumjs-util": "^7.0.2",
+    "ethereumjs-wallet": "^0.6.3",
+    "hdkey": "^2.0.0",
     "web3": "^1.2.8"
   }
 }
