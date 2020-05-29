@@ -30,7 +30,8 @@ async function getRawTx(fromAddress, toAddress, amount, gasLimit) {
   }
 }
 
-async function SendEther(fromAddress, toAddress, amount) {
+async function SendEther(toAddress, amount) {
+  let fromAddress = config.metamask.address;
   let rawTx = await getRawTx(fromAddress, toAddress, amount, 30400);
   let signedTx = new EthTx.Transaction(rawTx, { 'chain': config.network });
   let privateKey = Buffer.from(config.metamask.privateKey, 'hex');
@@ -41,4 +42,4 @@ async function SendEther(fromAddress, toAddress, amount) {
   web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex')).on('receipt', console.log);
 }
 
-SendEther(config.metamask.address, '0x1aee0fa072E0928348615075eD8d9E0e181f6094', '0.00000000244140625')
+module.exports = SendEther;
