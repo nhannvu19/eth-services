@@ -49,8 +49,11 @@ sendEther('0x1aee0fa072E0928348615075eD8d9E0e181f6094', '0.00000000244140625')
 ### Deploy ERC-20 smart contract
 
 Place your own smart contract file (.sol) in `services/smart_contracts/contracts`
+
 Please make sure you have correct SOLC version configured in `services/smart_contracts/truffle-config.js`
+
 Update the migration files in `services/migrations/` in order to be matched with your smart contract file.
+
 Finally, open terminal and then execute
 
 ```
