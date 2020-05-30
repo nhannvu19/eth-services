@@ -1,6 +1,10 @@
 # A wallet service powered by Web3
 
-This project is used to track Ethereum transactions of your wallet. It is also able to send ETH from your wallet to other addresses.
+This project is my own experiement project to research Ethereum. It has ability as following:
+
+- Send ETH from your wallet to other addresses.
+- Tracking transactions of an address.
+- Deploy ERC-20 smart contract
 
 ## Installation
 
