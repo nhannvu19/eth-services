@@ -46,7 +46,19 @@ Then try sending ETH to another address
 sendEther('0x1aee0fa072E0928348615075eD8d9E0e181f6094', '0.00000000244140625')
 ```
 
+### Deploy ERC-20 smart contract
+
+Place your own smart contract file (.sol) in `services/smart_contracts/contracts`
+Please make sure you have correct SOLC version configured in `services/smart_contracts/truffle-config.js`
+Update the migration files in `services/migrations/` in order to be matched with your smart contract file.
+Finally, open terminal and then execute
+
+```
+truffle migrate --reset --network ropsten
+```
+
 ## Contributing
 
 https://medium.com/pixelpoint/track-blockchain-transactions-like-a-boss-with-web3-js-c149045ca9bf
 https://viblo.asia/p/ethereum-su-dung-testnet-va-node-client-web3js-6J3ZgBPPKmB
+https://medium.com/swlh/develop-test-and-deploy-your-first-ethereum-smart-contract-with-truffle-14e8956d69fc
