@@ -12,32 +12,30 @@ function createAddress() {
   return web3.eth.accounts.create();
 }
 
-// WIP
-function createHDAddress(userId, extendedKey) {
-  let hdkey, derivePath, addrNode, pubKey, address;
-
-  if (!userId) {
-    throw new Error('User ID is required');
+function createHDAddress(index, extendedKey) {
+  if (!index) {
+    throw new Error('Index is required');
   }
+
+  let hdkey, addrNode, pubKey, address;
+  let derivePath = `m/0/0/${index}`;
 
   if (extendedKey) {
     hdkey = HDKey.fromExtendedKey(extendedKey);
-
-    derivePath = hdkey.privateKey ? `m/44'/60'/0'/0/${userId}` : `m/44/60/0/0/${userId}`
     addrNode = hdkey.derive(derivePath);
-    console.log(addrNode)
     pubKey = addrNode.publicKey;
+
+    console.log(`Public Key: 0x${addrNode.publicKey.toString('hex')}`);
   }
   else {
     hdkey = createNewHDKey();
-    addrNode = hdkey.derive(`m/44'/60'/0'/0/${userId}`);
+    addrNode = hdkey.derive(derivePath);
+    pubKey = ethUtil.privateToPublic(addrNode.privateKey);
 
-    console.log(`Public Key: ${addrNode.publicKey.toString('hex')}`);
+    console.log(`Public Key: 0x${addrNode.publicKey.toString('hex')}`);
     console.log(`Private Key: ${addrNode.privateKey.toString('hex')}`);
     console.log(`Extended Public Key: ${hdkey.publicExtendedKey}`);
     console.log(`Extended Private Key: ${hdkey.privateExtendedKey}`);
-
-    pubKey = ethUtil.privateToPublic(addrNode.privateKey);
   }
 
   address = ethUtil.publicToAddress(pubKey, true).toString('hex');
@@ -48,6 +46,7 @@ function createNewHDKey() {
   const mnemonic = BIP39.generateMnemonic();
   const seed = BIP39.mnemonicToSeedSync(mnemonic);
 
+  console.log(`Mnemonic: ${mnemonic}`);
   return HDKey.fromMasterSeed(seed);
 }
 
