@@ -99,7 +99,7 @@ contract Owned {
 // ERC20 Token, with the addition of symbol, name and decimals and assisted
 // token transfers
 // ----------------------------------------------------------------------------
-contract InuToken is ERC20Interface, Owned, SafeMath {
+contract AttrageToken is ERC20Interface, Owned, SafeMath {
     string public symbol;
     string public  name;
     uint8 public decimals;
@@ -113,8 +113,8 @@ contract InuToken is ERC20Interface, Owned, SafeMath {
     // Constructor
     // ------------------------------------------------------------------------
     constructor() public {
-        symbol = "INU";
-        name = "Inu Token";
+        symbol = "ATT";
+        name = "Attrage Token";
         decimals = 18;
         _totalSupply = 100000000000000000000000000;
         balances[0x2a6B67dE8D6C6364C05D187B4f5Ff9Db6228979B] = _totalSupply;
